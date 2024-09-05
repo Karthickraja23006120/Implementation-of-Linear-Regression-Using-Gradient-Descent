@@ -66,6 +66,11 @@ print(f"Predicted value: {pre}")
 
 ## Output:
 ![linear regression using gradient descent](sam.png)
+![Screenshot 2024-09-05 113921](https://github.com/user-attachments/assets/56346d3b-6cf6-47e1-8e47-d3842bb9187c)
+![Screenshot 2024-09-05 112038](https://github.com/user-attachments/assets/22ca5bb7-27dc-49a0-b790-e5e30d7bd6f1)
+![Screenshot 2024-09-05 113501](https://github.com/user-attachments/assets/02291380-f77a-4208-a161-46114f26f6fe)
+![Screenshot 2024-09-05 113517](https://github.com/user-attachments/assets/2ab1b4a4-a0c6-4942-912e-2c95a1a17996)
+
 
 
 ## Result:
