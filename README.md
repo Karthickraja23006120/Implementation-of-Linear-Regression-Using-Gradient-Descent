@@ -7,68 +7,66 @@ To write a program to predict the profit of a city using the linear regression m
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
-## Algorithm:
-1. Import the standard libraries in python required for finding Gradient Design.
-2. Read the dataset file and check any null value using .isnull() method. 
-3. Declare the default variables with respective values for linear regression.
-4. Calculate the loss using Mean Square Error.
-5. Predict the value of y.
-6. Plot the graph respect to hours and scores using .scatterplot() method for Linear Regression.
-7. Plot the graph respect to loss and iterations using .plot() method for Gradient Descent.
+## Algorithm
+1.Data Preprocessing: Load data from a CSV file (50_Startups.csv) using pandas and separate features (X) and target values (y). Convert these values to floating-point numbers for scaling, then apply standard scaling to normalize both features and target values.
 
+2.Add Bias Term to Features: In the linear_regression function, concatenate a column of ones to X1 to add a bias term, creating a new feature matrix, X, with an intercept term for the linear regression model.
+
+3.Initialize Parameters and Gradient Descent: Initialize theta (parameter vector) to zeros. For a specified number of iterations, perform gradient descent by calculating predictions, computing the error, and updating theta using the learning rate and gradient.
+
+4.Model Training: Update theta iteratively to minimize the cost function until the specified number of iterations is reached. This process optimizes theta to fit the scaled feature matrix and target values.
+
+5.Prediction with New Data: After training, apply the model to new data. Scale the new input data, append a bias term, and make a prediction by taking the dot product with theta. Finally, transform the scaled prediction back to the original scale for interpretation.
 ## Program:
+
 ```
-/*
+
 Program to implement the linear regression using gradient descent.
 Developed by: Karthick Raja K
-RegisterNumber: 212223240066
-*/
+RegisterNumber:  212223240066
 
-import numpy as np
+import numpy as  np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-def linear_regression(x1,y,learning_rate=0.01,num_iters=1000):
-  x=np.c_[np.ones(len(x1)),x1]
-  theta=np.zeros(x.shape[1]).reshape(-1,1)
-  for c in range(num_iters):
-    predictions=(x).dot(theta).reshape(-1,1)
-    errors=(predictions-y).reshape(-1,1)
-    theta-=learning_rate*(1/len(x1))*x.T.dot(errors)
-    return theta
-data=pd.read_csv('/content/50_Startups.csv',header=None)
-x=(data.iloc[1:, :-2].values)
-x1=x.astype(float)
+def linear_regression(x1,y,learning_rate=0.01,num_iters=100):
+  X=np.c_[np.ones(len(X1)),x1]
+  theta=np.zeros(X.shape[1]).reshape(-1,1)
+
+  for _ in range(num_iters):
+    predictions=(X).dot(theta).reshape(-1,1)
+    errors=(predictions-y).reshape(-1,1)        
+    theta=learning=learning_rate*(1/len(X1))*X.T.dot(errors)
+  return theta
+
+data=pd.read_csv("50_Startups.csv")
+print(data.head())
+X=(data.iloc[1:,:-2].values)
+print(X)
+X1=X.astype(float)
 scaler=StandardScaler()
 y=(data.iloc[1:,-1].values).reshape(-1,1)
-x1_scaled=scaler.fit_transform(x1)
-y1_scaled=scaler.fit_transform(y)
-theta=linear_regression(x1_scaled,y1_scaled)
+print(y)
+X1_Scaled=scaler.fit_transform(X1)
+Y1_Scaled=scaler.fit_transform(y)
+print(X1_Scaled)
+print(Y1_Scaled)
+theta=linear_regression(X1_Scaled,Y1_Scaled);
+
 new_data=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
-new_scaled=scaler.fit_transform(new_data)
-prediction=np.dot(np.append(1,new_scaled),theta)
+new_Scaled=scaler.fit_transform(new_data)
+prediction=np.dot(np.append(1,new_Scaled),theta)
 prediction=prediction.reshape(-1,1)
 pre=scaler.inverse_transform(prediction)
-print(f"Predicted value:{pre}")
+print(f"Predicted value: {pre}")
 
 ```
 
 ## Output:
-### Profit Prediction Graph :
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/d64e3ca6-c94d-49b5-9116-a817b1d6d623)
 
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/92625829-e1c6-473f-8f6a-f00d6209bdd6)
-### Compute Cost Value :
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/9e384697-fc9f-4277-92c1-841b285cd101)
-### h(x) Value :
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/d8b272d5-104d-4cdb-942c-b849e8b54300)
-### Cost function using Gradient Descent Graph :
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/c1ac8e0b-f252-4aac-8984-2c9f00da624a)
-### Profit for the Population 35,000 :
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/61aad46d-b2d2-47d7-a7d7-ece05043cf30)
-### Profit for the Population 70,000 :
-![image](https://github.com/harini1006/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/113497405/70f9f953-a1da-4225-be06-19b89e9b42fe)
+![Screenshot 2024-08-31 140350](https://github.com/user-attachments/assets/18385998-acfe-4b9f-a34a-6db9f81e7c00)
 
+![Screenshot 2024-08-31 140603](https://github.com/user-attachments/assets/5d8fadbb-67e8-4c39-b4b9-bf74b3b70e19)
 
 
 ## Result:
-Thus the program to implement the linear regression using gradient descent is written and verified using python
+Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
